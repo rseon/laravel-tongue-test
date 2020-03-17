@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6558f74828bca9ebecac73d90cea4b1a",
+    "content-hash": "1e0aa163ec977a7e5ee063d651a2176f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -947,6 +947,153 @@
             "time": "2020-02-05T15:00:44+00:00"
         },
         {
+            "name": "layershifter/tld-database",
+            "version": "1.0.69",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/layershifter/TLDDatabase.git",
+                "reference": "7423c7acdc5147268fb856f532a5d8875f6fe41e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/layershifter/TLDDatabase/zipball/7423c7acdc5147268fb856f532a5d8875f6fe41e",
+                "reference": "7423c7acdc5147268fb856f532a5d8875f6fe41e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "layershifter/tld-support": "^1.0.0",
+                "php": "^5.5.0 || ^7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "mikey179/vfsstream": "^1.6",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LayerShifter\\TLDDatabase\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Fedyashov",
+                    "email": "a@fedyashov.com"
+                }
+            ],
+            "description": "Database abstraction for Public Suffix List",
+            "keywords": [
+                "PSL",
+                "Public Suffix List",
+                "domain database",
+                "tld database"
+            ],
+            "time": "2019-08-04T10:03:36+00:00"
+        },
+        {
+            "name": "layershifter/tld-extract",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/layershifter/TLDExtract.git",
+                "reference": "b49cb89a4ed59a9474a47589054e56ce57787348"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/layershifter/TLDExtract/zipball/b49cb89a4ed59a9474a47589054e56ce57787348",
+                "reference": "b49cb89a4ed59a9474a47589054e56ce57787348",
+                "shasum": ""
+            },
+            "require": {
+                "layershifter/tld-database": "^1.0",
+                "layershifter/tld-support": "^1.1",
+                "php": "^5.5.0 || ^7.0",
+                "symfony/polyfill-intl-idn": "^1.10"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/static.php"
+                ],
+                "psr-4": {
+                    "LayerShifter\\TLDExtract\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Fedyashov",
+                    "email": "a@fedyashov.com"
+                }
+            ],
+            "description": "TLDExtract, library for extracting parts of domain, e.q. domain parser",
+            "keywords": [
+                "TLDExtract",
+                "domain parser"
+            ],
+            "abandoned": true,
+            "time": "2019-02-11T14:37:05+00:00"
+        },
+        {
+            "name": "layershifter/tld-support",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/layershifter/TLDSupport.git",
+                "reference": "9b9eb2350db82239289f4e6eb250a2fe4865b0db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/layershifter/TLDSupport/zipball/9b9eb2350db82239289f4e6eb250a2fe4865b0db",
+                "reference": "9b9eb2350db82239289f4e6eb250a2fe4865b0db",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "symfony/polyfill-mbstring": "^1.2"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "4.8.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LayerShifter\\TLDSupport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Fedyashov",
+                    "email": "a@fedyashov.com"
+                }
+            ],
+            "description": "Support package for TLDDatabase and TLDExtract",
+            "abandoned": true,
+            "time": "2016-06-18T12:28:04+00:00"
+        },
+        {
             "name": "league/commonmark",
             "version": "1.3.1",
             "source": {
@@ -1467,6 +1614,68 @@
                 "type"
             ],
             "time": "2019-12-15T19:35:24+00:00"
+        },
+        {
+            "name": "pmochine/laravel-tongue",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pmochine/Laravel-Tongue.git",
+                "reference": "19e9e2ca44ff2ca2f6f0f552aba15f3dbbac1da6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pmochine/Laravel-Tongue/zipball/19e9e2ca44ff2ca2f6f0f552aba15f3dbbac1da6",
+                "reference": "19e9e2ca44ff2ca2f6f0f552aba15f3dbbac1da6",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~6.0||~7.0",
+                "layershifter/tld-extract": "^2.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5.0",
+                "orchestra/testbench-browser-kit": "~5.0",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pmochine\\LaravelTongue\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pmochine\\LaravelTongue\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philipp Mochine",
+                    "email": "p@mochine.de"
+                }
+            ],
+            "description": "🎉 Finally a subdomain localization that works how you want it to work. 🌐",
+            "keywords": [
+                "i18n",
+                "language",
+                "laravel",
+                "localization",
+                "package",
+                "subdomain",
+                "tongue"
+            ],
+            "time": "2020-03-08T11:40:33+00:00"
         },
         {
             "name": "psr/container",
@@ -3451,6 +3660,74 @@
     ],
     "packages-dev": [
         {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "42d5da5379a7860093f8e4032167e4cb5ebec180"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/42d5da5379a7860093f8e4032167e4cb5ebec180",
+                "reference": "42d5da5379a7860093f8e4032167e4cb5ebec180",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^5.5|^6|^7",
+                "illuminate/session": "^5.5|^6|^7",
+                "illuminate/support": "^5.5|^6|^7",
+                "maximebf/debugbar": "^1.15.1",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4|^5",
+                "symfony/finder": "^3|^4|^5"
+            },
+            "require-dev": {
+                "laravel/framework": "5.5.x"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2020-02-25T20:42:23+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.3.0",
             "source": {
@@ -3833,6 +4110,67 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "58998b818c6567fac01e35b8a4b70c1a64530556"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/58998b818c6567fac01e35b8a4b70c1a64530556",
+                "reference": "58998b818c6567fac01e35b8a4b70c1a64530556",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3|^4|^5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2019-11-24T09:46:11+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5351,6 +5689,62 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "symfony/debug",
+            "version": "v4.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/debug.git",
+                "reference": "a980d87a659648980d89193fd8b7a7ca89d97d21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/a980d87a659648980d89193fd8b7a7ca89d97d21",
+                "reference": "a980d87a659648980d89193fd8b7a7ca89d97d21",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "psr/log": "~1.0"
+            },
+            "conflict": {
+                "symfony/http-kernel": "<3.4"
+            },
+            "require-dev": {
+                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Debug\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Debug Component",
+            "homepage": "https://symfony.com",
+            "time": "2020-02-23T14:41:43+00:00"
         },
         {
             "name": "theseer/tokenizer",

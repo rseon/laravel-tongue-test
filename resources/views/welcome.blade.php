@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{tongue()->current()}}" dir="{{tongue()->leftOrRight()}}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Laravel Tongue Test</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -41,11 +41,12 @@
             }
 
             .content {
-                text-align: center;
+
             }
 
             .title {
                 font-size: 84px;
+                text-align: center;
             }
 
             .links > a {
@@ -81,19 +82,60 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ $h1 ?? 'Laravel' }}
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <ul>
+                	<li>{{ __('Langue en cours') }} : <strong>{{ tongue()->current() }}</strong></li>
+                	<li>{{ __('Langues disponibles') }} : {{ implode(', ', tongue()->speaking()->keys()->all()) }}</li>
+                </ul>
+
+                <ul>
+                	<li>
+                		{{ __('URL en cours') }} :
+                		<ul>
+                			<li>FR : <a href="{{ dialect()->current('fr') }}">{{ dialect()->current('fr') }}</a></li>
+                			<li>EN : <a href="{{ dialect()->current('en') }}">{{ dialect()->current('en') }}</a></li>
+                			<li>ES : <a href="{{ dialect()->current('es') }}">{{ dialect()->current('es') }}</a></li>
+                		</ul>
+                	</li>
+                	<li>
+                		{{ __('Toutes les URL traduites sauf l\'URL actuelle') }} :
+                		<ul>
+                			@foreach (dialect()->translateAll() as $locale => $url)
+					            <li>{{ $locale }} : <a href="{{ $url }}">{{ $url }}</a></li>
+					        @endforeach
+                		</ul>
+                	</li>
+                	<li>
+						{{ __('Changer de langue') }} :
+						<ul>
+							@foreach(tongue()->speaking()->all() as $localeCode => $properties)
+								<li>
+									{{ $properties['native'] }} :
+									<a rel="alternate" hreflang="{{ $localeCode }}" href="{{ dialect()->current($localeCode) }}">
+										{{ dialect()->current($localeCode) }}
+									</a>
+								</li>
+							@endforeach
+						</ul>
+                	</li>
+                </ul>
+
+                <hr>
+
+                <ul>
+                    <li>Not localized page : <a href="{{ route('not-localized') }}">{{ route('not-localized') }}</a></li>
+                    <li>{{ __('Page traduite') }} : <a href="{{ route('localized') }}">{{ route('localized') }}</a></li>
+                    <li>
+                        {{ __('Afficher la page traduite') }} :
+                        <ul>
+                            <li>In French : <a href="{{ dialect()->redirectUrl(route('localized'), 'fr') }}">{{ dialect()->redirectUrl(route('localized'), 'fr') }}</a></li>
+                            <li>In English : <a href="{{ dialect()->redirectUrl(route('localized'), 'en') }}">{{ dialect()->redirectUrl(route('localized'), 'en') }}</a></li>
+                            <li>In Spanish : <a href="{{ dialect()->redirectUrl(route('localized'), 'es') }}">{{ dialect()->redirectUrl(route('localized'), 'es') }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </body>

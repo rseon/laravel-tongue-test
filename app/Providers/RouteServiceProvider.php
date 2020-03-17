@@ -30,7 +30,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // This will guess a locale from the current HTTP request
+        // and set the application locale.
+        tongue()->detect();
+
+        //If you use Carbon you can set the Locale right here.
+        \Carbon\Carbon::setLocale(tongue()->current());
 
         parent::boot();
     }

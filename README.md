@@ -1,78 +1,53 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Minimal Laravel to test awesome [pmochine/Laravel-Tongue](https://github.com/pmochine/Laravel-Tongue)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+```
+composer create-project laravel/laravel laravel-tongue-test
+composer require barryvdh/laravel-debugbar --dev
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+composer require pmochine/laravel-tongue
+php artisan vendor:publish --provider="Pmochine\LaravelTongue\ServiceProvider" --tag="config"
+```
 
-## About Laravel
+## Issue
+[Source issue](https://github.com/pmochine/Laravel-Tongue/issues/31)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+I want to set the main locale as `fr` without subdomain.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+I have created 4 domains :
+- [http://my-domain.dv](http://my-domain.dv) : FR (by default)
+- [http://en.my-domain.dv](http://en.my-domain.dv) : EN
+- [http://es.my-domain.dv](http://es.my-domain.dv) : ES
+- [http://fr.my-domain.dv](http://fr.my-domain.dv) : FR (only for testing)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+There is 1 localized route for test.
 
-## Learning Laravel
+The localized domains (with sudomains) are working properly but the generic (http://my-domain.dv) depends on the last visited subdomain.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The localized routes are not translated.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Expectation
+### en.my-domain.dv
+- [x] Language : EN
+- [x] Localized route : /localized
+- [x] Current URL is correct
+- Redirecting localized route :
+	- [ ] In French : ~~http://my-domain.dv/traduite~~ http://en.my-domain.dv/localized
+	- [ ] In Spanish : ~~http://es.my-domain.dv/traducida~~ http://en.my-domain.dv/localized
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### es.my-domain.dv
+- [x] Language : ES
+- [x] Localized route : /traducida
+- [x] Current URL is correct
+- Redirecting localized route :
+	- [ ] In French : ~~http://my-domain.dv/traduite~~ http://es.my-domain.dv/traducida
+	- [ ] In English : ~~http://en.my-domain.dv/localized~~ http://es.my-domain.dv/traducida
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+### my-domain.dv
+For the first access, FR is by default (correct) but after depends on the last visited subdomain.
 
-## Contributing
+Sometimes, http://en.my-domain.dv redirects to http://my-domain.dv
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Comments
+When installing the package, warning from Composer : **Package layershifter/tld-support is abandoned, you should avoid using it. No replacement was suggested.**
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
