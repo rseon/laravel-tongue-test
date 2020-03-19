@@ -130,9 +130,9 @@
                     <li>
                         {{ __('Afficher la page traduite') }} :
                         <ul>
-                            <li>In French : <a href="{{ dialect()->redirectUrl(route('localized'), 'fr') }}">{{ dialect()->redirectUrl(route('localized'), 'fr') }}</a></li>
-                            <li>In English : <a href="{{ dialect()->redirectUrl(route('localized'), 'en') }}">{{ dialect()->redirectUrl(route('localized'), 'en') }}</a></li>
-                            <li>In Spanish : <a href="{{ dialect()->redirectUrl(route('localized'), 'es') }}">{{ dialect()->redirectUrl(route('localized'), 'es') }}</a></li>
+                            <li>In French : <a href="{{ dialect()->translate('routes.localized', null, 'fr') }}">{{ dialect()->translate('routes.localized', null, 'fr') }}</a></li>
+                            <li>In English : <a href="{{ dialect()->translate('routes.localized', null, 'en') }}">{{ dialect()->translate('routes.localized', null, 'en') }}</a></li>
+                            <li>In Spanish : <a href="{{ dialect()->translate('routes.localized', null, 'es') }}">{{ dialect()->translate('routes.localized', null, 'es') }}</a></li>
                         </ul>
                     </li>
                 </ul>
