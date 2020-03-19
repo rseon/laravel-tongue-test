@@ -13,20 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/not-localized', function() {
+Route::get('/not-localized', function () {
     return view('welcome', [
         'h1' => 'Not localized page',
     ]);
 })->name('not-localized');
 
-Route::get(dialect()->interpret('routes.localized'), function() {
-    return view('welcome', [
-        'h1' => __('Page traduite'),
-    ]);
-})
-    ->name('localized')
-    ->middleware('speaks-tongue');
+/**
+ * Everything Down here is going to be redirected of the middleware.
+ * It checks if the set locale is the same as the users one.
+ */
+Route::middleware('speaks-tongue')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get(dialect()->interpret('routes.localized'), function () {
+        return view('welcome', [
+            'h1' => __('Page traduite'),
+        ]);
+    })->name('localized');
+});
